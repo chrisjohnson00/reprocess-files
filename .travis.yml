@@ -10,7 +10,6 @@ jobs:
         - set -e
         - docker build -t chrisjohnson00/handbrake_filemove_reprocessor -f Dockerfile .
         - docker run chrisjohnson00/handbrake_filemove_reprocessor python -m flake8
-        - docker run chrisjohnson00/handbrake_filemove_reprocessor python -m pytest
         - docker login --username=chrisjohnson00 --password=$DOCKER_HUB_PASSWORD
         - docker tag chrisjohnson00/handbrake_filemove_reprocessor chrisjohnson00/handbrake_filemove_reprocessor:$TRAVIS_BRANCH
         - docker push chrisjohnson00/handbrake_filemove_reprocessor:$TRAVIS_BRANCH
