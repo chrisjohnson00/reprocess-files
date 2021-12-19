@@ -3,12 +3,17 @@ kind: 'Deployment'
 metadata:
   name: 'handbrake-job-file-mover-reprocessor'
   namespace: 'handbrake-jobs'
+  labels:
+    app: 'handbrake-job-file-mover-reprocessor'
 spec:
   replicas: 1
   selector:
     matchLabels:
       app: 'handbrake-job-file-mover-reprocessor'
   template:
+    metadata:
+      labels:
+        app: 'handbrake-job-file-mover-reprocessor'
     spec:
       securityContext:
         runAsUser: 1000
