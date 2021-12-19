@@ -29,8 +29,6 @@ def get_config(key):
 
 
 if __name__ == "__main__":
-    move_types = ["tv", 'movie']
-    for move_type in move_types:
-        directory = os.listdir(f"/output/{move_type}")
-        for filename in directory:
-            send_completion_message(filename, move_type)
+    directory = os.listdir("/output")
+    for filename in directory:
+        send_completion_message(filename, get_config('MOVE_TYPE'))
