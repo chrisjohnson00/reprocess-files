@@ -1,7 +1,5 @@
-flake8==3.8.3
-importlib-metadata==1.7.0
-kafka-python==2.0.1
-mccabe==0.6.1
-pycodestyle==2.6.0
-pyflakes==2.2.0
-zipp==3.1.0
+certifi==2021.10.8
+fastavro==1.4.7
+pulsar-client==2.8.1
+pygogo==0.13.2
+six==1.16.0

@@ -1,0 +1,37 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  labels:
+    app: handbrake-job-file-mover-reprocessor
+  name: handbrake-job-file-mover-reprocessor
+  namespace: handbrake-jobs
+spec:
+  backoffLimit: 1
+  completions: 1
+  parallelism: 1
+  template:
+    metadata:
+      labels:
+        app: handbrake-job-file-mover-reprocessor
+        job-name: handbrake-job-file-mover-reprocessor
+    spec:
+      containers:
+        - image: chrisjohnson00/reprocess-files:v2.0.0-rc-1599671200.0
+          imagePullPolicy: IfNotPresent
+          name: handbrake-job-file-mover-reprocessor
+          volumeMounts:
+            - name: output
+              mountPath: /output
+          env:
+            - name: PULSAR_TOPIC
+              value: handbrake-file-move
+            - name: PULSAR_SERVER
+              value: pulsar-broker.pulsar:6650
+            - name: MOVE_TYPE
+              value: tv
+      volumes:
+        - name: output
+          nfs:
+            server: 192.168.1.131
+            path: /data/k8s/output
+      restartPolicy: Never
