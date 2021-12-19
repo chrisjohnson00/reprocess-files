@@ -16,12 +16,12 @@ spec:
         job-name: handbrake-job-file-mover-reprocessor
     spec:
       containers:
-        - image: chrisjohnson00/reprocess-files:v2.0.0-rc-1599640478.0
+        - image: chrisjohnson00/reprocess-files:v2.0.0-rc-1599671200.0
           imagePullPolicy: IfNotPresent
           name: handbrake-job-file-mover-reprocessor
           volumeMounts:
-              - name: output
-                mountPath: /output
+            - name: output
+              mountPath: /output
           env:
             - name: PULSAR_TOPIC
               value: handbrake-file-move
