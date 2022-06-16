@@ -1,4 +1,4 @@
-certifi==2021.10.8
+certifi==2022.6.15
 fastavro==1.4.7
 pulsar-client==2.8.1
 pygogo==0.13.2
